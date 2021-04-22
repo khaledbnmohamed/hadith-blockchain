@@ -1,0 +1,49 @@
+{
+    "name": "hadith-chain-producer",
+    "version": "1.0.0",
+    "client": {
+        "organization": "alazhar-university",
+        "connection": {
+            "timeout": {
+                "peer": {
+                    "endorser": "300"
+                }
+            }
+        }
+    },
+    "organizations": {
+        "alazhar-university": {
+            "mspid": "AlazharuniversityMSP",
+            "peers": [
+                "peer0.alazhar-university.example.com"
+            ],
+            "certificateAuthorities": [
+                "ca.alazhar-university.example.com"
+            ]
+        }
+    },
+    "peers": {
+        "peer0.alazhar-university.example.com": {
+            "url": "grpcs://localhost:9051",
+            "tlsCACerts": {
+                "pem": "-----BEGIN CERTIFICATE-----\nMIICkTCCAjigAwIBAgIRAKuMpfZX3M6YdlbIzusgg24wCgYIKoZIzj0EAwIwgZIx\nCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1TYW4g\nRnJhbmNpc2NvMScwJQYDVQQKEx5hbGF6aGFyLXVuaXZlcnNpdHkuZXhhbXBsZS5j\nb20xLTArBgNVBAMTJHRsc2NhLmFsYXpoYXItdW5pdmVyc2l0eS5leGFtcGxlLmNv\nbTAeFw0yMTA0MTkxNTA3MDBaFw0zMTA0MTcxNTA3MDBaMIGSMQswCQYDVQQGEwJV\nUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZyYW5jaXNjbzEn\nMCUGA1UEChMeYWxhemhhci11bml2ZXJzaXR5LmV4YW1wbGUuY29tMS0wKwYDVQQD\nEyR0bHNjYS5hbGF6aGFyLXVuaXZlcnNpdHkuZXhhbXBsZS5jb20wWTATBgcqhkjO\nPQIBBggqhkjOPQMBBwNCAARWQrhQkaDqsw9qMejbNS4C6Kac2PKc/LOw4oUmZvwR\n+3wd46a8rKPvafgxMW1PtqmOp7qHI2PZilroG5hwE//lo20wazAOBgNVHQ8BAf8E\nBAMCAaYwHQYDVR0lBBYwFAYIKwYBBQUHAwIGCCsGAQUFBwMBMA8GA1UdEwEB/wQF\nMAMBAf8wKQYDVR0OBCIEINo75Y4WffvKLkxvdwKeiUbJWMNScqe67evKoA7nduz/\nMAoGCCqGSM49BAMCA0cAMEQCIHR+tF0R/U+z2pKHv3AYiyEwr/UNTp1DnVqAl1zZ\nljzRAiB8FQkgmxu045wg7aybWKqMjpdehL+Za6jxF5hL6IqWAw==\n-----END CERTIFICATE-----\n"
+            },
+            "grpcOptions": {
+                "ssl-target-name-override": "peer0.alazhar-university.example.com",
+                "hostnameOverride": "peer0.alazhar-university.example.com"
+            }
+        }
+    },
+    "certificateAuthorities": {
+        "ca.alazhar-university.example.com": {
+            "url": "https://localhost:8054",
+            "caName": "ca-alazhar-university",
+            "tlsCACerts": {
+                "pem": "-----BEGIN CERTIFICATE-----\nMIICizCCAjKgAwIBAgIRAJLGsEhfvW2bQrxxRaiF/wQwCgYIKoZIzj0EAwIwgY8x\nCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1TYW4g\nRnJhbmNpc2NvMScwJQYDVQQKEx5hbGF6aGFyLXVuaXZlcnNpdHkuZXhhbXBsZS5j\nb20xKjAoBgNVBAMTIWNhLmFsYXpoYXItdW5pdmVyc2l0eS5leGFtcGxlLmNvbTAe\nFw0yMTA0MTkxNTA3MDBaFw0zMTA0MTcxNTA3MDBaMIGPMQswCQYDVQQGEwJVUzET\nMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZyYW5jaXNjbzEnMCUG\nA1UEChMeYWxhemhhci11bml2ZXJzaXR5LmV4YW1wbGUuY29tMSowKAYDVQQDEyFj\nYS5hbGF6aGFyLXVuaXZlcnNpdHkuZXhhbXBsZS5jb20wWTATBgcqhkjOPQIBBggq\nhkjOPQMBBwNCAASe1DJ8k4+mRHmwrSIp0MZK3XBZ3q02EOIbsZJF/hIiPxAQv+4W\nlmou45XYvaSgEqrMhhbNCNKFZNfgGZmTFaXko20wazAOBgNVHQ8BAf8EBAMCAaYw\nHQYDVR0lBBYwFAYIKwYBBQUHAwIGCCsGAQUFBwMBMA8GA1UdEwEB/wQFMAMBAf8w\nKQYDVR0OBCIEIG1UvRofarm1eUccouVvuhJoFoqGdiiI639XKhaFNUqnMAoGCCqG\nSM49BAMCA0cAMEQCIGyxMgZNWXTFk7cx9lDJqQrjYUdX6yvqxUvsMkE2RHmKAiAM\nHRye/FwOhhNZFKe+s1h8b1ZnjzDHQVX1NH6Z3eXDyA==\n-----END CERTIFICATE-----\n"
+            },
+            "httpOptions": {
+                "verify": false
+            }
+        }
+    }
+}

@@ -1,0 +1,49 @@
+{
+    "name": "hadith-chain-producer",
+    "version": "1.0.0",
+    "client": {
+        "organization": "omelkorra-university",
+        "connection": {
+            "timeout": {
+                "peer": {
+                    "endorser": "300"
+                }
+            }
+        }
+    },
+    "organizations": {
+        "omelkorra-university": {
+            "mspid": "OmElkorauniversityMSP",
+            "peers": [
+                "peer0.omelkorra-university.example.com"
+            ],
+            "certificateAuthorities": [
+                "ca.omelkorra-university.example.com"
+            ]
+        }
+    },
+    "peers": {
+        "peer0.omelkorra-university.example.com": {
+            "url": "grpcs://localhost:11051",
+            "tlsCACerts": {
+                "pem": "-----BEGIN CERTIFICATE-----\nMIICmTCCAj+gAwIBAgIQYe9/kiQ0RnwI67TC4VNEcjAKBggqhkjOPQQDAjCBljEL\nMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\ncmFuY2lzY28xKTAnBgNVBAoTIG9tZWxrb3JyYS11bml2ZXJzaXR5LmV4YW1wbGUu\nY29tMS8wLQYDVQQDEyZ0bHNjYS5vbWVsa29ycmEtdW5pdmVyc2l0eS5leGFtcGxl\nLmNvbTAeFw0yMTA0MTkxNTA3MDBaFw0zMTA0MTcxNTA3MDBaMIGWMQswCQYDVQQG\nEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZyYW5jaXNj\nbzEpMCcGA1UEChMgb21lbGtvcnJhLXVuaXZlcnNpdHkuZXhhbXBsZS5jb20xLzAt\nBgNVBAMTJnRsc2NhLm9tZWxrb3JyYS11bml2ZXJzaXR5LmV4YW1wbGUuY29tMFkw\nEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEMScsg6YBIRRbUI43FmtOwDavuGb5jmnd\nzQ8pjwEJqQ0UB9PSaMQl2XJEM1DzotHtmEYKaaMIbfGNcClJiGnEFqNtMGswDgYD\nVR0PAQH/BAQDAgGmMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDATAPBgNV\nHRMBAf8EBTADAQH/MCkGA1UdDgQiBCBDvUmUK4LlRFiTgHKUHcv355BEcxis96NP\nZ7ioC16ywjAKBggqhkjOPQQDAgNIADBFAiEAurlCjvV3gzdhqPAx5kgMlAwLRW+B\neP5tCHBb0hvmT4sCIGUzEsJ4FtjVL3e/lu9sy5jHOYk9mcNRQ0NiR/kDugRL\n-----END CERTIFICATE-----\n"
+            },
+            "grpcOptions": {
+                "ssl-target-name-override": "peer0.omelkorra-university.example.com",
+                "hostnameOverride": "peer0.omelkorra-university.example.com"
+            }
+        }
+    },
+    "certificateAuthorities": {
+        "ca.omelkorra-university.example.com": {
+            "url": "https://localhost:10054",
+            "caName": "ca-omelkorra-university",
+            "tlsCACerts": {
+                "pem": "-----BEGIN CERTIFICATE-----\nMIICkjCCAjmgAwIBAgIQFsG1mCMWp0n1aBauzW0C7DAKBggqhkjOPQQDAjCBkzEL\nMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\ncmFuY2lzY28xKTAnBgNVBAoTIG9tZWxrb3JyYS11bml2ZXJzaXR5LmV4YW1wbGUu\nY29tMSwwKgYDVQQDEyNjYS5vbWVsa29ycmEtdW5pdmVyc2l0eS5leGFtcGxlLmNv\nbTAeFw0yMTA0MTkxNTA3MDBaFw0zMTA0MTcxNTA3MDBaMIGTMQswCQYDVQQGEwJV\nUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZyYW5jaXNjbzEp\nMCcGA1UEChMgb21lbGtvcnJhLXVuaXZlcnNpdHkuZXhhbXBsZS5jb20xLDAqBgNV\nBAMTI2NhLm9tZWxrb3JyYS11bml2ZXJzaXR5LmV4YW1wbGUuY29tMFkwEwYHKoZI\nzj0CAQYIKoZIzj0DAQcDQgAEsTkQQQpnPX0xOZEBGCrHBIK7/ni8T4KslU9x9ngm\neDmWl0LD3cV3ApkwlfR5v6bIzj5wa3P4ElGzyBnVJnsUjKNtMGswDgYDVR0PAQH/\nBAQDAgGmMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDATAPBgNVHRMBAf8E\nBTADAQH/MCkGA1UdDgQiBCAveRqw8vSF9sT+kx8Udkgleq+nqFhgUKYwljnBHwfr\nhzAKBggqhkjOPQQDAgNHADBEAiA0l4pKdxnNdfO39aWwSPUCiesV/7oUhpbf4A1+\n8XL7lgIgTNI1Ac9rbAbLS9qtmwo0uoxqRAurQLP1Wzq4O2XH4EE=\n-----END CERTIFICATE-----\n"
+            },
+            "httpOptions": {
+                "verify": false
+            }
+        }
+    }
+}

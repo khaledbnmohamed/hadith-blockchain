@@ -1,0 +1,49 @@
+{
+    "name": "hadith-chain-producer",
+    "version": "1.0.0",
+    "client": {
+        "organization": "islamicuniveristy",
+        "connection": {
+            "timeout": {
+                "peer": {
+                    "endorser": "300"
+                }
+            }
+        }
+    },
+    "organizations": {
+        "islamicuniveristy": {
+            "mspid": "IslamicuniveristyMSP",
+            "peers": [
+                "peer0.islamicuniveristy.example.com"
+            ],
+            "certificateAuthorities": [
+                "ca.islamicuniveristy.example.com"
+            ]
+        }
+    },
+    "peers": {
+        "peer0.islamicuniveristy.example.com": {
+            "url": "grpcs://localhost:10051",
+            "tlsCACerts": {
+                "pem": "-----BEGIN CERTIFICATE-----\nMIICjTCCAjSgAwIBAgIRAMYRsJg/26XVaINnQO1AAlcwCgYIKoZIzj0EAwIwgZAx\nCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1TYW4g\nRnJhbmNpc2NvMSYwJAYDVQQKEx1pc2xhbWljdW5pdmVyaXN0eS5leGFtcGxlLmNv\nbTEsMCoGA1UEAxMjdGxzY2EuaXNsYW1pY3VuaXZlcmlzdHkuZXhhbXBsZS5jb20w\nHhcNMjEwNDE5MTUwNzAwWhcNMzEwNDE3MTUwNzAwWjCBkDELMAkGA1UEBhMCVVMx\nEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBGcmFuY2lzY28xJjAk\nBgNVBAoTHWlzbGFtaWN1bml2ZXJpc3R5LmV4YW1wbGUuY29tMSwwKgYDVQQDEyN0\nbHNjYS5pc2xhbWljdW5pdmVyaXN0eS5leGFtcGxlLmNvbTBZMBMGByqGSM49AgEG\nCCqGSM49AwEHA0IABAnnpemrH2yE7WHmhA5SSsWpb3dntRd93UIgH2hrDmpUfENN\nK+2JQpKmhLliwNabY9qn5YtfFyRjlr7Ge9pNOaSjbTBrMA4GA1UdDwEB/wQEAwIB\npjAdBgNVHSUEFjAUBggrBgEFBQcDAgYIKwYBBQUHAwEwDwYDVR0TAQH/BAUwAwEB\n/zApBgNVHQ4EIgQgrBsrP7y7gHafPGeUHIGF1c6lywiDp9u1uv1rkNvWkmgwCgYI\nKoZIzj0EAwIDRwAwRAIgcnFGpbygiwpgqYky7JW2wJ9TV1FRzbdntdK/AKa6mH0C\nICIXHCMbalIh13YGB+3eqC4Y7vGBoBcJE//alDQ+KMCC\n-----END CERTIFICATE-----\n"
+            },
+            "grpcOptions": {
+                "ssl-target-name-override": "peer0.islamicuniveristy.example.com",
+                "hostnameOverride": "peer0.islamicuniveristy.example.com"
+            }
+        }
+    },
+    "certificateAuthorities": {
+        "ca.islamicuniveristy.example.com": {
+            "url": "https://localhost:9054",
+            "caName": "ca-islamicuniveristy",
+            "tlsCACerts": {
+                "pem": "-----BEGIN CERTIFICATE-----\nMIIChzCCAi2gAwIBAgIQGcBH310hqapvLSvghl2CoDAKBggqhkjOPQQDAjCBjTEL\nMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\ncmFuY2lzY28xJjAkBgNVBAoTHWlzbGFtaWN1bml2ZXJpc3R5LmV4YW1wbGUuY29t\nMSkwJwYDVQQDEyBjYS5pc2xhbWljdW5pdmVyaXN0eS5leGFtcGxlLmNvbTAeFw0y\nMTA0MTkxNTA3MDBaFw0zMTA0MTcxNTA3MDBaMIGNMQswCQYDVQQGEwJVUzETMBEG\nA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZyYW5jaXNjbzEmMCQGA1UE\nChMdaXNsYW1pY3VuaXZlcmlzdHkuZXhhbXBsZS5jb20xKTAnBgNVBAMTIGNhLmlz\nbGFtaWN1bml2ZXJpc3R5LmV4YW1wbGUuY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0D\nAQcDQgAETXeSAQPOXnG1tQHWUdKXLmwdwopcnUmy9iHnbNrpEimo8sdNTHRLw4EV\nbhTxp+mfS9gfsOFfZ0qQwllyAsOhkqNtMGswDgYDVR0PAQH/BAQDAgGmMB0GA1Ud\nJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDATAPBgNVHRMBAf8EBTADAQH/MCkGA1Ud\nDgQiBCD+cYFEEk6WWuOvOS2SBqLem0MwhBpvSsargCMKK+8eazAKBggqhkjOPQQD\nAgNIADBFAiEApsKMXhxHk1I+Ema8lYhjsOW82LGjH5Nk7yOeNBGTjOoCIDtgKrsq\nXzXMyD9VKQxsJgsyVa0FRax8090Taq+FROuA\n-----END CERTIFICATE-----\n"
+            },
+            "httpOptions": {
+                "verify": false
+            }
+        }
+    }
+}

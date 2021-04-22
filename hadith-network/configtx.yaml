@@ -1,0 +1,186 @@
+# Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+---
+Organizations:
+    - &OrdererOrg
+        Name: OrdererOrg
+        ID: OrdererMSP
+        MSPDir: crypto-config/ordererOrganizations/example.com/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('OrdererMSP.member')"
+            Writers:
+                Type: Signature
+                Rule: "OR('OrdererMSP.member')"
+            Admins:
+                Type: Signature
+                Rule: "OR('OrdererMSP.admin')"
+
+    - &Producer
+        Name: ProducerMSP
+        ID: ProducerMSP
+        MSPDir: crypto-config/peerOrganizations/producer.example.com/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('ProducerMSP.admin', 'ProducerMSP.peer', 'ProducerMSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('ProducerMSP.admin', 'ProducerMSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('ProducerMSP.admin')"
+
+    - &Alazharuniversity
+        Name: AlazharuniversityMSP
+        ID: AlazharuniversityMSP
+        MSPDir: crypto-config/peerOrganizations/alazhar-university.example.com/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('AlazharuniversityMSP.admin', 'AlazharuniversityMSP.peer', 'AlazharuniversityMSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('AlazharuniversityMSP.admin', 'AlazharuniversityMSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('AlazharuniversityMSP.admin')"
+                
+    - &Islamicuniveristy
+        Name: IslamicuniveristyMSP
+        ID: IslamicuniveristyMSP
+        MSPDir: crypto-config/peerOrganizations/islamicuniveristy.example.com/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('IslamicuniveristyMSP.admin', 'IslamicuniveristyMSP.peer', 'IslamicuniveristyMSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('IslamicuniveristyMSP.admin', 'IslamicuniveristyMSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('IslamicuniveristyMSP.admin')"
+                
+    - &OmElkorauniversity
+        Name: OmElkorauniversityMSP
+        ID: OmElkorauniversityMSP
+        MSPDir: crypto-config/peerOrganizations/omelkorra-university.example.com/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('OmElkorauniversityMSP.admin', 'OmElkorauniversityMSP.peer', 'OmElkorauniversityMSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('OmElkorauniversityMSP.admin', 'OmElkorauniversityMSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('OmElkorauniversityMSP.admin')"
+
+Capabilities:
+    Channel: &ChannelCapabilities
+        V1_4_3: true
+        V1_3: false
+        V1_1: false
+    Orderer: &OrdererCapabilities
+        V1_4_2: true
+        V1_1: false
+    Application: &ApplicationCapabilities
+        V1_4_2: true
+        V1_3: false
+        V1_2: false
+        V1_1: false
+
+Application: &ApplicationDefaults
+    Organizations:
+    Policies:
+        Readers:
+            Type: ImplicitMeta
+            Rule: "ANY Readers"
+        Writers:
+            Type: ImplicitMeta
+            Rule: "ANY Writers"
+        Admins:
+            Type: ImplicitMeta
+            Rule: "MAJORITY Admins"
+
+    Capabilities:
+        <<: *ApplicationCapabilities
+
+Orderer: &OrdererDefaults
+    OrdererType: solo
+    Addresses:
+        - orderer.example.com:7050
+    BatchTimeout: 2s
+    BatchSize:
+        MaxMessageCount: 10
+        AbsoluteMaxBytes: 99 MB
+        PreferredMaxBytes: 512 KB
+
+    Kafka:
+        Brokers:
+            - 127.0.0.1:9092
+
+    Organizations:
+
+    Policies:
+        Readers:
+            Type: ImplicitMeta
+            Rule: "ANY Readers"
+        Writers:
+            Type: ImplicitMeta
+            Rule: "ANY Writers"
+        Admins:
+            Type: ImplicitMeta
+            Rule: "MAJORITY Admins"
+        BlockValidation:
+            Type: ImplicitMeta
+            Rule: "ANY Writers"
+
+Channel: &ChannelDefaults
+    Policies:
+        Readers:
+            Type: ImplicitMeta
+            Rule: "ANY Readers"
+        Writers:
+            Type: ImplicitMeta
+            Rule: "ANY Writers"
+        Admins:
+            Type: ImplicitMeta
+            Rule: "MAJORITY Admins"
+    Capabilities:
+        <<: *ChannelCapabilities
+
+Profiles:
+
+    SupplyOrdererGenesis:
+        <<: *ChannelDefaults
+        Orderer:
+            <<: *OrdererDefaults
+            Organizations:
+                - *OrdererOrg
+            Capabilities:
+                <<: *OrdererCapabilities
+        Consortiums:
+            SampleConsortium:
+                Organizations:
+                    - *Producer
+                    - *Alazharuniversity
+                    - *Islamicuniveristy
+                    - *OmElkorauniversity
+    SupplyChannel:
+        Consortium: SampleConsortium
+        <<: *ChannelDefaults
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *Producer
+                - *Alazharuniversity
+                - *Islamicuniveristy
+                - *OmElkorauniversity
+            Capabilities:
+                <<: *ApplicationCapabilities
+
