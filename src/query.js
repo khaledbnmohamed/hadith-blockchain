@@ -7,7 +7,7 @@
 const { FileSystemWallet, Gateway } = require('fabric-network');
 const path = require('path');
 
-const ccpPath = path.resolve(__dirname, '..', 'connections', 'connection-producer.json');
+const ccpPath = path.resolve(__dirname, '..', 'connections', 'connection-islamicuniveristy.json');
 
 async function main() {
     try {

@@ -31,7 +31,7 @@ services:
       - CORE_PEER_LISTENADDRESS=0.0.0.0:7051
       - CORE_PEER_CHAINCODEADDRESS=peer0.producer.example.com:7052
       - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7052
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.alazhar-university.example.com:7051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.producer.example.com:7051
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.producer.example.com:7051
       - CORE_PEER_LOCALMSPID=ProducerMSP
     volumes:
@@ -76,7 +76,7 @@ services:
       - CORE_PEER_CHAINCODEADDRESS=peer0.islamicuniveristy.example.com:10052
       - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:10052
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.islamicuniveristy.example.com:10051
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.producer.example.com:10051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.islamicuniveristy.example.com:10051
       - CORE_PEER_LOCALMSPID=IslamicuniveristyMSP
     volumes:
         - /var/run/:/host/var/run/
@@ -99,7 +99,7 @@ services:
       - CORE_PEER_CHAINCODEADDRESS=peer0.omelkorra-university.example.com:11052
       - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:11052
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.omelkorra-university.example.com:11051
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.producer.example.com:11051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.omelkorra-university.example.com:11051
       - CORE_PEER_LOCALMSPID=OmElkorauniversityMSP
     volumes:
         - /var/run/:/host/var/run/
@@ -116,11 +116,11 @@ services:
       - FABRIC_CA_SERVER_CA_NAME=ca-producer
       - FABRIC_CA_SERVER_TLS_ENABLED=true
       - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.producer.example.com-cert.pem
-      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/07f870f21c297df8f8679d0c08f1cc4d762b1d67cecfac89328cd7760c63ef97_sk
+      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/365f14095f3f1374c7ab40ed7c23decef477b140f625e5417fb57d2d6a4836fb_sk
       - FABRIC_CA_SERVER_PORT=7054
     ports:
       - "7054:7054"
-    command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.producer.example.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/07f870f21c297df8f8679d0c08f1cc4d762b1d67cecfac89328cd7760c63ef97_sk -b admin:adminpw -d'
+    command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.producer.example.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/365f14095f3f1374c7ab40ed7c23decef477b140f625e5417fb57d2d6a4836fb_sk -b admin:adminpw -d'
     volumes:
       - ../crypto-config/peerOrganizations/producer.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
       
@@ -131,11 +131,11 @@ services:
       - FABRIC_CA_SERVER_CA_NAME=ca-alazhar-university
       - FABRIC_CA_SERVER_TLS_ENABLED=true
       - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.alazhar-university.example.com-cert.pem
-      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/ca2eafb04be46701fbffe8ce4dd89a75ac301d576d6be16b381cdcd03df0aa64_sk
+      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/29c014eb62c811938fb21bbf29a33f183b5650938aa2e94136a8fef17266f39c_sk
       - FABRIC_CA_SERVER_PORT=8054
     ports:
       - "8054:8054"
-    command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.alazhar-university.example.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/ca2eafb04be46701fbffe8ce4dd89a75ac301d576d6be16b381cdcd03df0aa64_sk -b admin:adminpw -d'
+    command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.alazhar-university.example.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/29c014eb62c811938fb21bbf29a33f183b5650938aa2e94136a8fef17266f39c_sk -b admin:adminpw -d'
     volumes:
       - ../crypto-config/peerOrganizations/alazhar-university.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
       
@@ -146,11 +146,11 @@ services:
       - FABRIC_CA_SERVER_CA_NAME=ca-islamicuniveristy
       - FABRIC_CA_SERVER_TLS_ENABLED=true
       - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.islamicuniveristy.example.com-cert.pem
-      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/7861480a2d1f45a9042083d8d34ff045804930b787a4f025a6b8a44a9bf910ba_sk
+      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/0d95fa20fc2f7a399b190126d021bf73f1d779542fc4837986a175460c47a502_sk
       - FABRIC_CA_SERVER_PORT=9054
     ports:
       - "9054:9054"
-    command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.islamicuniveristy.example.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/7861480a2d1f45a9042083d8d34ff045804930b787a4f025a6b8a44a9bf910ba_sk -b admin:adminpw -d'
+    command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.islamicuniveristy.example.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/0d95fa20fc2f7a399b190126d021bf73f1d779542fc4837986a175460c47a502_sk -b admin:adminpw -d'
     volumes:
       - ../crypto-config/peerOrganizations/islamicuniveristy.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
       
@@ -162,10 +162,10 @@ services:
       - FABRIC_CA_SERVER_CA_NAME=ca-omelkorra-university
       - FABRIC_CA_SERVER_TLS_ENABLED=true
       - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.omelkorra-university.example.com-cert.pem
-      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/48a33334d5610d80d7b96e79f3e1dfdec1d223b7b9eb4de549c8811f23c831a5_sk
+      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/07a3b66f555dea38f7011ff9f1b2ae2fa6ee094d3054c8a8d63fd5855639a4de_sk
       - FABRIC_CA_SERVER_PORT=10054
     ports:
       - "10054:10054"
-    command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.omelkorra-university.example.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/48a33334d5610d80d7b96e79f3e1dfdec1d223b7b9eb4de549c8811f23c831a5_sk -b admin:adminpw -d'
+    command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.omelkorra-university.example.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/07a3b66f555dea38f7011ff9f1b2ae2fa6ee094d3054c8a8d63fd5855639a4de_sk -b admin:adminpw -d'
     volumes:
       - ../crypto-config/peerOrganizations/omelkorra-university.example.com/ca/:/etc/hyperledger/fabric-ca-server-config

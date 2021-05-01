@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({
 app.post('/api/AddHadith', async function (req, res) {
 
   try {
-    const contract = await fabricNetwork.connectNetwork('connection-producer.json', 'wallet/wallet-producer');
+    const contract = await fabricNetwork.connectNetwork('connection-islamicuniveristy.json', 'wallet/wallet-islamicuniveristy');
     let hadith = {
       id: req.body.id,
       chain: req.body.chain,
@@ -48,7 +48,7 @@ app.post('/api/AddHadith', async function (req, res) {
 
 app.get('/api/getHadith/:id', async function (req, res) {
   try {
-    const contract = await fabricNetwork.connectNetwork('connection-omelkorra-university.json', 'wallet/wallet-omelkorra-university');
+    const contract = await fabricNetwork.connectNetwork('connection-islamicuniveristy.json', 'wallet/wallet-islamicuniveristy');
     const result = await contract.evaluateTransaction('queryAsset', req.params.id.toString());
     let response = JSON.parse(result.toString());
     res.json({result:response});
