@@ -23,15 +23,15 @@ class HadithChain extends Contract {
     return assetAsBytes.toString();
   }
   
-  async setPosition(ctx, id, latitude, longitude) {
+  async setPosition(ctx, id, chain, wording) {
     console.info('============= START : Set position ===========');
     const keyAsBytes = await ctx.stub.getState(id); 
     if (!keyAsBytes || keyAsBytes.length === 0) {
       throw new Error(`${id} does not exist`);
     }
     let key = JSON.parse(keyAsBytes.toString());
-    key.latitude = latitude;
-    key.longitude = longitude;
+    key.chain = chain;
+    key.wording = wording;
     await ctx.stub.putState(id, Buffer.from(JSON.stringify(key)));
     console.info('============= END : Set position ===========');
     return ctx.stub.getTxID();

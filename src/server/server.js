@@ -8,19 +8,31 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
+// TODOs:
+// 1) Frontend -> ReactJS (getHadith, AddHadith) (till next friday, only conusming 2 endpoints)
+// 2) Finish 2 endpoints
+// 3) Maybe add couchDB
+// 4) Organization and channel Configuration
+// 5) Force admin policies ( only admins can consume endpoints)
+// 6) Tokens for authorizations
+// 7) Have a login page with crendetials for admins and cycle goes on from there
+// 8)
 
-app.post('/api/addTuna', async function (req, res) {
+app.post('/api/AddHadith', async function (req, res) {
 
   try {
     const contract = await fabricNetwork.connectNetwork('connection-producer.json', 'wallet/wallet-producer');
-    let tuna = {
+    let hadith = {
       id: req.body.id,
-      latitude: req.body.latitude,
-      longitude: req.body.longitude,
-      length: req.body.length,
-      weight: req.body.weight
+      chain: req.body.chain,
+      wording: req.body.wording
     }
-    let tx = await contract.submitTransaction('addAsset', JSON.stringify(tuna));
+    // call hadith nlp enpoint
+    // based on result ,submit transaction ( status الصحة) or discard
+    // based on private network, prefedined organization,
+    // credetinals admin, if yo yuhave cerd amdin, you can submit
+
+    let tx = await contract.submitTransaction('addAsset', JSON.stringify(hadith));
     res.json({
       status: 'OK - Transaction has been submitted',
       txid: tx.toString()
@@ -34,7 +46,7 @@ app.post('/api/addTuna', async function (req, res) {
 
 });
 
-app.get('/api/getTuna/:id', async function (req, res) {
+app.get('/api/getHadith/:id', async function (req, res) {
   try {
     const contract = await fabricNetwork.connectNetwork('connection-omelkorra-university.json', 'wallet/wallet-omelkorra-university');
     const result = await contract.evaluateTransaction('queryAsset', req.params.id.toString());
@@ -53,7 +65,7 @@ app.post('/api/setPosition', async function (req, res) {
 
   try {
     const contract = await fabricNetwork.connectNetwork('connection-islamicuniveristy.json', 'wallet/wallet-islamicuniveristy');
-    let tx = await contract.submitTransaction('setPosition', req.body.id.toString(), req.body.latitude.toString(), req.body.longitude.toString());
+    let tx = await contract.submitTransaction('setPosition', req.body.id.toString(), req.body.chain.toString(), req.body.wording.toString());
     res.json({
       status: 'OK - Transaction has been submitted',
       txid: tx.toString()
@@ -68,18 +80,18 @@ app.post('/api/setPosition', async function (req, res) {
 });
 
 
-app.get('/api/getHistorySushi/:id', async function (req, res) {
+app.get('/api/getHistoryBlock/:id', async function (req, res) {
   try {
     const contract = await fabricNetwork.connectNetwork('connection-producer.json', 'wallet/wallet-producer');
-    const historySushi = JSON.parse((await contract.evaluateTransaction('getHistory', req.params.id.toString())).toString());
-    const actualSushi = JSON.parse((await contract.evaluateTransaction('querySushi', req.params.id.toString())).toString());
-    historySushi.unshift(actualSushi);
-    const historyTuna = JSON.parse((await contract.evaluateTransaction('getHistory', actualSushi.tunaId.toString())).toString());
-    const actualTuna = JSON.parse((await contract.evaluateTransaction('queryTuna', actualSushi.tunaId.toString())).toString());
-    historyTuna.unshift(actualTuna);
+    const historyBlock = JSON.parse((await contract.evaluateTransaction('getHistory', req.params.id.toString())).toString());
+    const actualBlock = JSON.parse((await contract.evaluateTransaction('queryBlock', req.params.id.toString())).toString());
+    historyBlock.unshift(actualBlock);
+    const historyHadith = JSON.parse((await contract.evaluateTransaction('getHistory', actualBlock.hadithId.toString())).toString());
+    const actualHadith = JSON.parse((await contract.evaluateTransaction('queryHadith', actualBlock.hadithId.toString())).toString());
+    historyHadith.unshift(actualHadith);
     res.json({
-      historySushi: historySushi,
-      historyTuna: historyTuna
+      historyBlock: historyBlock,
+      historyHadith: historyHadith
     });
   } catch (error) {
     console.error(`Failed to evaluate transaction: ${error}`);
@@ -89,7 +101,7 @@ app.get('/api/getHistorySushi/:id', async function (req, res) {
   }
 })
 
-app.get('/api/getSushi/:id', async function (req, res) {
+app.get('/api/getBlock/:id', async function (req, res) {
   try {
     const contract = await fabricNetwork.connectNetwork('connection-omelkorra-university.json', 'wallet/wallet-omelkorra-university');
     const result = await contract.evaluateTransaction('queryAsset', req.params.id.toString());
@@ -104,17 +116,17 @@ app.get('/api/getSushi/:id', async function (req, res) {
 })
 
 
-app.post('/api/addSushi', async function (req, res) {
+app.post('/api/addBlock', async function (req, res) {
   try {
     const contract = await fabricNetwork.connectNetwork('connection-alazhar-university.json', 'wallet/wallet-alazhar-university');
-    let sushi = {
+    let block = {
       id: req.body.id,
-      latitude: req.body.latitude,
-      longitude: req.body.longitude,
+      chain: req.body.chain,
+      wording: req.body.wording,
       type: req.body.type,
-      tunaId: req.body.tunaId
+      hadithId: req.body.hadithId
     }
-    let tx = await contract.submitTransaction('addAsset', JSON.stringify(sushi));
+    let tx = await contract.submitTransaction('addAsset', JSON.stringify(block));
     res.json({
       status: 'OK - Transaction has been submitted',
       txid: tx.toString()

@@ -49,7 +49,7 @@ Organizations:
             Admins:
                 Type: Signature
                 Rule: "OR('AlazharuniversityMSP.admin')"
-                
+
     - &Islamicuniveristy
         Name: IslamicuniveristyMSP
         ID: IslamicuniveristyMSP
@@ -64,7 +64,7 @@ Organizations:
             Admins:
                 Type: Signature
                 Rule: "OR('IslamicuniveristyMSP.admin')"
-                
+
     - &OmElkorauniversity
         Name: OmElkorauniversityMSP
         ID: OmElkorauniversityMSP

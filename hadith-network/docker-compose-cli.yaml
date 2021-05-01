@@ -44,7 +44,7 @@ services:
       service: peer0.alazhar-university.example.com
     networks:
       - byfn
-      
+
   peer0.islamicuniveristy.example.com:
     container_name: peer0.islamicuniveristy.example.com
     extends:
@@ -52,7 +52,7 @@ services:
       service: peer0.islamicuniveristy.example.com
     networks:
       - byfn
-      
+
   peer0.omelkorra-university.example.com:
     container_name: peer0.omelkorra-university.example.com
     extends:
@@ -60,7 +60,7 @@ services:
       service: peer0.omelkorra-university.example.com
     networks:
       - byfn
-      
+
   caProducer:
     container_name: caProducer
     extends:
@@ -68,7 +68,7 @@ services:
       service: caProducer
     networks:
       - byfn
-      
+
   caAlazharuniversity:
     container_name: caAlazharuniversity
     extends:
@@ -76,7 +76,7 @@ services:
       service: caAlazharuniversity
     networks:
       - byfn
-      
+
   caIslamicuniveristy:
     container_name: caIslamicuniveristy
     extends:
@@ -84,7 +84,7 @@ services:
       service: caIslamicuniveristy
     networks:
       - byfn
-      
+
   caOmElkorauniversity:
     container_name: caOmElkorauniversity
     extends:
@@ -92,8 +92,8 @@ services:
       service: caOmElkorauniversity
     networks:
       - byfn
-      
-      
+
+
   cli:
     container_name: cli
     image: hyperledger/fabric-tools:$IMAGE_TAG

@@ -3,16 +3,7 @@ Hadith blockchain proof of concept in Hyperledger Fabric. Network with four comp
 
 # Installation instructions
 
-1. Install Hyperledger fabric dependencies:
-https://hyperledger-fabric.readthedocs.io/en/release-1.4/prereqs.html
-
-2. Donwload fabric binaries and samples:
-`curl -sSL http://bit.ly/2ysbOFE | bash -s 1.4.3`
-
-3. Go to fabric samples:
-`cd fabric-samples`
-
-4. Install node-js dependencies
+Install node-js dependencies
 `./network.sh install`
 
 
@@ -47,8 +38,8 @@ This will create the crypto material for all the orgs, start the network and reg
 
 ```
   "id":integer,
-  "latitude":string,
-  "longitude":string,
+  "chain":string,
+  "wording":string,
   "length":integer,
   "weight":integer
  ``` 
@@ -70,8 +61,8 @@ This will create the crypto material for all the orgs, start the network and reg
   --header 'content-type: application/json' \
   --data '{
 			"id":10001,
-			"latitude":"43.3623",
-			"longitude":"8.4115",
+			"chain":"43.3623",
+			"wording":"8.4115",
 			"length":34,
 			"weight":50
 		   }' 
@@ -98,8 +89,8 @@ This will create the crypto material for all the orgs, start the network and reg
  {
     "result": {
         "id": integer
-        "latitude": string
-        "longitude": string
+        "chain": string
+        "wording": string
         "length": integer
         "weight": integer
     } 
@@ -117,7 +108,7 @@ curl --request GET \
 
 **setPosition**
 ----
-  Sets the position (latitude and longitud) for the specified id, could be sushiId or HadithId
+  Sets the position (chain and longitud) for the specified id, could be blockId or HadithId
 
 * **URL**
 
@@ -130,8 +121,8 @@ curl --request GET \
 * **Data Params**
 ``` 
 "id":10001,
-"latitude":"43.3623",
-"longitude":"8.4115"
+"chain":"43.3623",
+"wording":"8.4115"
 ``` 
 
 * **Success Response:**
@@ -151,18 +142,18 @@ curl --request POST \
   --header 'content-type: application/json' \
   --data '{
             "id":10001,
-            "latitude":"43.3623",
-            "longitude":"8.4115"
+            "chain":"43.3623",
+            "wording":"8.4115"
 			}'
 ```
 
-**addSushi**
+**addBlock**
 ----
-   Add new Sushi to the blockchain network with the related HadithId
+   Add new Block to the blockchain network with the related HadithId
 
 * **URL**
 
-  `/api/getHadith/addSushi`
+  `/api/getHadith/addBlock`
 
 * **Method:**
   
@@ -171,8 +162,8 @@ curl --request POST \
 * **Data Params**
  ```   
 "id":integer,
-"latitude":string,
-"longitude":string,
+"chain":string,
+"wording":string,
 "type":string,
 "hadithId":integer
  ``` 
@@ -189,24 +180,24 @@ curl --request POST \
 
 ``` 
 curl --request POST \
-  --url http://localhost:3000/api/addSushi \
+  --url http://localhost:3000/api/addBlock \
   --header 'content-type: application/json' \
   --data '{
 			"id":200001,
-            "latitude":"42.5987",
-            "longitude":"5.5671",
+            "chain":"42.5987",
+            "wording":"5.5671",
             "type":"sashimi",
             "hadithId":10001
 			}'
 ```
 
-**getSushi**
+**getBlock**
 ----
   Get s from the blockchain with the actual status
 
 * **URL**
 
-  `/api/getSushi/:id`
+  `/api/getBlock/:id`
 
 * **Method:**
   
@@ -221,8 +212,8 @@ curl --request POST \
   {
     "result": {
             "id":"200001",
-            "latitude":"42.5987",
-            "longitude":"5.5671",
+            "chain":"42.5987",
+            "wording":"5.5671",
             "type":"sashimi",
             "hadithId":10001
 			}'
@@ -233,19 +224,19 @@ curl --request POST \
  
 ``` 
 curl --request GET \
-  --url 'http://localhost:3000/api/getSushi/<SushiId>' \
+  --url 'http://localhost:3000/api/getBlock/<BlockId>' \
   --header 'content-type: application/json' \
 ```
 
 
 
-**getSushiHistory**
+**getBlockHistory**
 ----
-  Get sushi history, from the HadithId that started the hadith-chain, getting all the history positions, until the sushi is delivered, with the sushi history too
+  Get block history, from the HadithId that started the hadith-chain, getting all the history positions, until the block is delivered, with the block history too
 
 * **URL**
 
-  `/api/getHistorySushi/:id`
+  `/api/getHistoryBlock/:id`
 
 * **Method:**
   
@@ -258,18 +249,18 @@ curl --request GET \
   
  ``` 
 {
-    "historySushi": [
+    "historyBlock": [
         {
             "id": "200001",
-            "latitude":"42.5987",
-            "longitude":"5.5671",
+            "chain":"42.5987",
+            "wording":"5.5671",
             "type": "sashimi",
             "hadithId": 10004
         },
         {
             "id": "200001",
-            "latitude":"43.3623",
-            "longitude":"8.4115",
+            "chain":"43.3623",
+            "wording":"8.4115",
             "type": "sashimi",
             "hadithId": 10004
         }
@@ -277,8 +268,8 @@ curl --request GET \
     "historyHadith": [
         {
             "id": "10004",
-            "latitude":"43.3623",
-            "longitude":"8.4115",
+            "chain":"43.3623",
+            "wording":"8.4115",
             "length": 34,
             "weight": 50
         }
@@ -290,6 +281,6 @@ curl --request GET \
  
  ``` 
 curl --request GET \
-  --url 'http://localhost:3000/api/getHistorySushi/<SushiId>' \
+  --url 'http://localhost:3000/api/getHistoryBlock/<BlockId>' \
   --header 'content-type: application/json' \
 ```

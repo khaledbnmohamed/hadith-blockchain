@@ -36,8 +36,8 @@ async function main() {
         const contract = network.getContract('supcc');
 
         // Submit the specified transaction.
-        let tuna = {id:2,location:'22', size:'33'}
-        let result = await contract.submitTransaction('addTuna',JSON.stringify(tuna));
+        let hadith = {id:2,location:'22', size:'33'}
+        let result = await contract.submitTransaction('AddHadith',JSON.stringify(hadith));
         console.log('Transaction has been submitted');
 
         // Disconnect from the gateway.
