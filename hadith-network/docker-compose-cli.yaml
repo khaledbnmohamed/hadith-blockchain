@@ -8,13 +8,13 @@ version: '2'
 volumes:
   orderer.example.com:
   peer0.producer.example.com:
-  peer0.alazhar-university.example.com:
+  peer0.alazharuniversity.example.com:
   peer0.islamicuniveristy.example.com:
-  peer0.omelkorra-university.example.com:
+  peer0.omelkorrauniversity.example.com:
   caProducer:
   caAlazharuniversity:
   caIslamicuniveristy:
-  caOmElkorauniversity:
+  caOmelkorrauniversity:
 
 networks:
   byfn:
@@ -37,11 +37,11 @@ services:
     networks:
       - byfn
 
-  peer0.alazhar-university.example.com:
-    container_name: peer0.alazhar-university.example.com
+  peer0.alazharuniversity.example.com:
+    container_name: peer0.alazharuniversity.example.com
     extends:
       file:  base/docker-compose-base.yaml
-      service: peer0.alazhar-university.example.com
+      service: peer0.alazharuniversity.example.com
     networks:
       - byfn
 
@@ -53,11 +53,11 @@ services:
     networks:
       - byfn
 
-  peer0.omelkorra-university.example.com:
-    container_name: peer0.omelkorra-university.example.com
+  peer0.omelkorrauniversity.example.com:
+    container_name: peer0.omelkorrauniversity.example.com
     extends:
       file:  base/docker-compose-base.yaml
-      service: peer0.omelkorra-university.example.com
+      service: peer0.omelkorrauniversity.example.com
     networks:
       - byfn
 
@@ -85,11 +85,11 @@ services:
     networks:
       - byfn
 
-  caOmElkorauniversity:
-    container_name: caOmElkorauniversity
+  caOmelkorrauniversity:
+    container_name: caOmelkorrauniversity
     extends:
       file:  base/docker-compose-base.yaml
-      service: caOmElkorauniversity
+      service: caOmelkorrauniversity
     networks:
       - byfn
 
@@ -123,12 +123,12 @@ services:
     depends_on:
       - orderer.example.com
       - peer0.producer.example.com
-      - peer0.alazhar-university.example.com
+      - peer0.alazharuniversity.example.com
       - peer0.islamicuniveristy.example.com
-      - peer0.omelkorra-university.example.com
+      - peer0.omelkorrauniversity.example.com
       - caProducer
       - caAlazharuniversity
       - caIslamicuniveristy
-      - caOmElkorauniversity
+      - caOmelkorrauniversity
     networks:
       - byfn

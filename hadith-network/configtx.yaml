@@ -38,7 +38,7 @@ Organizations:
     - &Alazharuniversity
         Name: AlazharuniversityMSP
         ID: AlazharuniversityMSP
-        MSPDir: crypto-config/peerOrganizations/alazhar-university.example.com/msp
+        MSPDir: crypto-config/peerOrganizations/alazharuniversity.example.com/msp
         Policies:
             Readers:
                 Type: Signature
@@ -65,20 +65,20 @@ Organizations:
                 Type: Signature
                 Rule: "OR('IslamicuniveristyMSP.admin')"
 
-    - &OmElkorauniversity
-        Name: OmElkorauniversityMSP
-        ID: OmElkorauniversityMSP
-        MSPDir: crypto-config/peerOrganizations/omelkorra-university.example.com/msp
+    - &Omelkorrauniversity
+        Name: OmelkorrauniversityMSP
+        ID: OmelkorrauniversityMSP
+        MSPDir: crypto-config/peerOrganizations/omelkorrauniversity.example.com/msp
         Policies:
             Readers:
                 Type: Signature
-                Rule: "OR('OmElkorauniversityMSP.admin', 'OmElkorauniversityMSP.peer', 'OmElkorauniversityMSP.client')"
+                Rule: "OR('OmelkorrauniversityMSP.admin', 'OmelkorrauniversityMSP.peer', 'OmelkorrauniversityMSP.client')"
             Writers:
                 Type: Signature
-                Rule: "OR('OmElkorauniversityMSP.admin', 'OmElkorauniversityMSP.client')"
+                Rule: "OR('OmelkorrauniversityMSP.admin', 'OmelkorrauniversityMSP.client')"
             Admins:
                 Type: Signature
-                Rule: "OR('OmElkorauniversityMSP.admin')"
+                Rule: "OR('OmelkorrauniversityMSP.admin')"
 
 Capabilities:
     Channel: &ChannelCapabilities
@@ -170,7 +170,7 @@ Profiles:
                     - *Producer
                     - *Alazharuniversity
                     - *Islamicuniveristy
-                    - *OmElkorauniversity
+                    - *Omelkorrauniversity
     SupplyChannel:
         Consortium: SampleConsortium
         <<: *ChannelDefaults
@@ -180,7 +180,7 @@ Profiles:
                 - *Producer
                 - *Alazharuniversity
                 - *Islamicuniveristy
-                - *OmElkorauniversity
+                - *Omelkorrauniversity
             Capabilities:
                 <<: *ApplicationCapabilities
 

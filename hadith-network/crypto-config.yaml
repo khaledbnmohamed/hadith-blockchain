@@ -14,7 +14,7 @@ PeerOrgs:
     Users:
       Count: 1
   - Name: Alazharuniversity
-    Domain: alazhar-university.example.com
+    Domain: alazharuniversity.example.com
     EnableNodeOUs: true
     Template:
       Count: 1
@@ -27,8 +27,8 @@ PeerOrgs:
       Count: 1
     Users:
       Count: 1
-  - Name: OmElkorauniversity
-    Domain: omelkorra-university.example.com
+  - Name: Omelkorrauniversity
+    Domain: omelkorrauniversity.example.com
     EnableNodeOUs: true
     Template:
       Count: 1

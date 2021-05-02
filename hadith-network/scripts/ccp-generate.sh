@@ -26,14 +26,14 @@ CAPEM=./hadith-network/crypto-config/peerOrganizations/producer.example.com/ca/c
 
 echo "$(json_ccp $ORG $ORGMSP $P0PORT $CAPORT $PEERPEM $CAPEM)" > ./connections/connection-producer.json
 
-ORG=alazhar-university
+ORG=alazharuniversity
 ORGMSP=Alazharuniversity
 P0PORT=9051
 CAPORT=8054
-PEERPEM=./hadith-network/crypto-config/peerOrganizations/alazhar-university.example.com/tlsca/tlsca.alazhar-university.example.com-cert.pem
-CAPEM=./hadith-network/crypto-config/peerOrganizations/alazhar-university.example.com/ca/ca.alazhar-university.example.com-cert.pem
+PEERPEM=./hadith-network/crypto-config/peerOrganizations/alazharuniversity.example.com/tlsca/tlsca.alazharuniversity.example.com-cert.pem
+CAPEM=./hadith-network/crypto-config/peerOrganizations/alazharuniversity.example.com/ca/ca.alazharuniversity.example.com-cert.pem
 
-echo "$(json_ccp $ORG $ORGMSP $P0PORT $CAPORT $PEERPEM $CAPEM)" > ./connections/connection-alazhar-university.json
+echo "$(json_ccp $ORG $ORGMSP $P0PORT $CAPORT $PEERPEM $CAPEM)" > ./connections/connection-alazharuniversity.json
 ORG=islamicuniveristy
 ORGMSP=Islamicuniveristy
 P0PORT=10051
@@ -43,11 +43,11 @@ CAPEM=./hadith-network/crypto-config/peerOrganizations/islamicuniveristy.example
 
 echo "$(json_ccp $ORG $ORGMSP $P0PORT $CAPORT $PEERPEM $CAPEM)" > ./connections/connection-islamicuniveristy.json
 
-ORG=omelkorra-university
-ORGMSP=OmElkorauniversity
+ORG=omelkorrauniversity
+ORGMSP=Omelkorrauniversity
 P0PORT=11051
 CAPORT=10054
-PEERPEM=./hadith-network/crypto-config/peerOrganizations/omelkorra-university.example.com/tlsca/tlsca.omelkorra-university.example.com-cert.pem
-CAPEM=./hadith-network/crypto-config/peerOrganizations/omelkorra-university.example.com/ca/ca.omelkorra-university.example.com-cert.pem
+PEERPEM=./hadith-network/crypto-config/peerOrganizations/omelkorrauniversity.example.com/tlsca/tlsca.omelkorrauniversity.example.com-cert.pem
+CAPEM=./hadith-network/crypto-config/peerOrganizations/omelkorrauniversity.example.com/ca/ca.omelkorrauniversity.example.com-cert.pem
 
-echo "$(json_ccp $ORG $ORGMSP $P0PORT $CAPORT $PEERPEM $CAPEM)" > ./connections/connection-omelkorra-university.json
+echo "$(json_ccp $ORG $ORGMSP $P0PORT $CAPORT $PEERPEM $CAPEM)" > ./connections/connection-omelkorrauniversity.json

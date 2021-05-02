@@ -21,6 +21,8 @@ app.use(bodyParser.urlencoded({
 app.post('/api/AddHadith', async function (req, res) {
 
   try {
+    // const contract = await fabricNetwork.connectNetwork('connection-omelkorrauniversity.json', 'wallet/wallet-omelkorrauniversity');
+
     const contract = await fabricNetwork.connectNetwork('connection-islamicuniveristy.json', 'wallet/wallet-islamicuniveristy');
     let hadith = {
       id: req.body.id,
@@ -48,7 +50,9 @@ app.post('/api/AddHadith', async function (req, res) {
 
 app.get('/api/getHadith/:id', async function (req, res) {
   try {
-    const contract = await fabricNetwork.connectNetwork('connection-islamicuniveristy.json', 'wallet/wallet-islamicuniveristy');
+    // const contract = await fabricNetwork.connectNetwork('connection-islamicuniveristy.json', 'wallet/wallet-islamicuniveristy');
+
+    const contract = await fabricNetwork.connectNetwork('connection-omelkorrauniversity.json', 'wallet/wallet-omelkorrauniversity');
     const result = await contract.evaluateTransaction('queryAsset', req.params.id.toString());
     let response = JSON.parse(result.toString());
     res.json({result:response});
@@ -103,7 +107,7 @@ app.get('/api/getHistoryBlock/:id', async function (req, res) {
 
 app.get('/api/getBlock/:id', async function (req, res) {
   try {
-    const contract = await fabricNetwork.connectNetwork('connection-omelkorra-university.json', 'wallet/wallet-omelkorra-university');
+    const contract = await fabricNetwork.connectNetwork('connection-omelkorrauniversity.json', 'wallet/wallet-omelkorrauniversity');
     const result = await contract.evaluateTransaction('queryAsset', req.params.id.toString());
     let response = JSON.parse(result.toString());
     res.json(response);

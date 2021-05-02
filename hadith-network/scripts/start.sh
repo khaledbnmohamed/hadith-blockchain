@@ -18,6 +18,6 @@ docker exec -it cli ./scripts/channel/createChannel.sh
 # echo "Joining Islamicuniveristy to channel..."
 # docker exec -it cli ./scripts/channel/join-peer.sh peer0 islamicuniveristy IslamicuniveristyMSP 10051 1.0
 echo "Joining Alazharuniversity to channel..."
-docker exec -it cli ./scripts/channel/join-peer.sh peer0 alazhar-university AlazharuniversityMSP 9051 1.0
-echo "Joining OmElkorauniversity to channel..." 
-docker exec -it cli ./scripts/channel/join-peer.sh peer0 omelkorra-university OmElkorauniversityMSP 11051 1.0
+docker exec -it cli ./scripts/channel/join-peer.sh peer0 alazharuniversity AlazharuniversityMSP 9051 1.0
+echo "Joining Omelkorrauniversity to channel..." 
+docker exec -it cli ./scripts/channel/join-peer.sh peer0 omelkorrauniversity OmelkorrauniversityMSP 11051 1.0

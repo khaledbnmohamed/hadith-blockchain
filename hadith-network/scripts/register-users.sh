@@ -1,13 +1,13 @@
 #!/bin/bash
 node src/enrollAdmin.js producer
-node src/enrollAdmin.js alazhar-university
+node src/enrollAdmin.js alazharuniversity
 node src/enrollAdmin.js islamicuniveristy
-node src/enrollAdmin.js omelkorra-university
+node src/enrollAdmin.js omelkorrauniversity
 
 node src/registerUser.js producer
-node src/registerUser.js alazhar-university
+node src/registerUser.js alazharuniversity
 node src/registerUser.js islamicuniveristy
-node src/registerUser.js omelkorra-university
+node src/registerUser.js omelkorrauniversity
 
 echo "***********************************"
 echo "       Starting API server         "

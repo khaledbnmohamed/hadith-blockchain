@@ -23,7 +23,7 @@ echo "Generating channel artifacts and genesis block..."
  sed $OPTS "s/CA1_PRIVATE_KEY/${PRIV_KEY}/g" docker-compose-base.yaml
  
  cd $CURRENT_DIR
- cd ./hadith-network/crypto-config/peerOrganizations/alazhar-university.example.com/ca/
+ cd ./hadith-network/crypto-config/peerOrganizations/alazharuniversity.example.com/ca/
  PRIV_KEY=$(ls *_sk)
  cd $CURRENT_DIR
  cd ./hadith-network/base
@@ -39,7 +39,7 @@ echo "Generating channel artifacts and genesis block..."
  
  
  cd $CURRENT_DIR
- cd ./hadith-network/crypto-config/peerOrganizations/omelkorra-university.example.com/ca/
+ cd ./hadith-network/crypto-config/peerOrganizations/omelkorrauniversity.example.com/ca/
  PRIV_KEY=$(ls *_sk)
  cd $CURRENT_DIR
  cd ./hadith-network/base
