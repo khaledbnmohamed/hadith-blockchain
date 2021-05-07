@@ -2,11 +2,14 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 const fabricNetwork = require('./fabricNetwork')
+const fs = require('fs');
 app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+
+app.use(express.json());
 
 // TODOs:
 // 1) Frontend -> ReactJS (getHadith, AddHadith) (till next friday, only conusming 2 endpoints)
@@ -26,8 +29,10 @@ app.post('/api/AddHadith', async function (req, res) {
     const contract = await fabricNetwork.connectNetwork('connection-islamicuniveristy.json', 'wallet/wallet-islamicuniveristy');
     let hadith = {
       id: req.body.id,
-      chain: req.body.chain,
-      wording: req.body.wording
+      hadith: req.body.hadith,
+      isnad: req.body.isnad,
+      matn: req.body.matn,
+      ekhrag: req.body.ekhrag
     }
     // call hadith nlp enpoint
     // based on result ,submit transaction ( status الصحة) or discard
@@ -63,6 +68,27 @@ app.get('/api/getHadith/:id', async function (req, res) {
     });
   }
 })
+
+app.get('/api/getAllAhadithTesting', async function (req, res) {
+    try {
+      // const contract = await fabricNetwork.connectNetwork('connection-islamicuniveristy.json', 'wallet/wallet-islamicuniveristy');
+      const contract = await fabricNetwork.connectNetwork('connection-omelkorrauniversity.json', 'wallet/wallet-omelkorrauniversity');
+
+      let response_array = [];
+      for(let id = 1; id <= 5; id++) {
+        const result = await contract.evaluateTransaction('queryAsset', id.toString());
+        let json_result = JSON.parse(result.toString());
+        response_array.push(json_result)
+      }
+
+      res.json({result:response_array});
+    } catch (error) {
+      console.error(`Failed to evaluate transaction: ${error}`);
+      res.status(500).json({
+        error: error
+      });
+    }
+  })
 
 
 app.post('/api/setPosition', async function (req, res) {
@@ -145,7 +171,22 @@ app.post('/api/addBlock', async function (req, res) {
 })
 
 
+function add_hadith_data() {
+    let raw_ahadith = fs.readFileSync('../ahadith.json');
+    let json_ahadith = JSON.parse(raw_ahadith);
+    for(var index in json_ahadith["data"]){
+      axios({
+        method: 'post',
+        url: 'http://localhost:3000/api/AddHadith',
+        data: json_ahadith["data"][index],
+        headers: {'Content-Type': 'application/json'}
+      });
+    }
+  }
+
+
 app.listen(3000, ()=>{
+    add_hadith_data()
   console.log("***********************************");
   console.log("API server listening at localhost:3000");
   console.log("***********************************");
