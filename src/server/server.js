@@ -3,6 +3,10 @@ var bodyParser = require('body-parser');
 var app = express();
 const fabricNetwork = require('./fabricNetwork')
 const fs = require('fs');
+const axios = require('axios');
+
+
+
 app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -172,7 +176,7 @@ app.post('/api/addBlock', async function (req, res) {
 
 
 function add_hadith_data() {
-    let raw_ahadith = fs.readFileSync('../ahadith.json');
+    let raw_ahadith = fs.readFileSync(process.cwd() + "/src/" +'ahadith.json');
     let json_ahadith = JSON.parse(raw_ahadith);
     for(var index in json_ahadith["data"]){
       axios({
@@ -186,7 +190,7 @@ function add_hadith_data() {
 
 
 app.listen(3000, ()=>{
-    add_hadith_data()
+  add_hadith_data()
   console.log("***********************************");
   console.log("API server listening at localhost:3000");
   console.log("***********************************");
