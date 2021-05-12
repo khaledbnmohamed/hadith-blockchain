@@ -179,11 +179,14 @@ function add_hadith_data() {
     let raw_ahadith = fs.readFileSync(process.cwd() + "/src/" +'ahadith.json');
     let json_ahadith = JSON.parse(raw_ahadith);
     for(var index in json_ahadith["data"]){
+      let hadith = json_ahadith["data"][index]
       axios({
         method: 'post',
         url: 'http://localhost:3000/api/AddHadith',
-        data: json_ahadith["data"][index],
+        data: hadith,
         headers: {'Content-Type': 'application/json'}
+      }).then(function (response) {
+        console.log("Response for adding hadith : ", hadith.id , " is ", response.data)
       });
     }
   }
