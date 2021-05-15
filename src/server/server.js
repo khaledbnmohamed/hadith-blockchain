@@ -4,6 +4,7 @@ var app = express();
 const fabricNetwork = require('./fabricNetwork')
 const fs = require('fs');
 const axios = require('axios');
+const cors = require('cors');
 
 
 
@@ -14,6 +15,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(express.json());
+app.use(cors())
 
 // TODOs:
 // 1) Frontend -> ReactJS (getHadith, AddHadith) (till next friday, only conusming 2 endpoints)
