@@ -1,0 +1,49 @@
+This is ApacheBench, Version 2.3 <$Revision: 1843412 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 100 requests
+Completed 200 requests
+Completed 300 requests
+Completed 400 requests
+Completed 500 requests
+Finished 500 requests
+
+
+Server Software:        
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /api/getHadith/1
+Document Length:        1189 bytes
+
+Concurrency Level:      10
+Time taken for tests:   34.697 seconds
+Complete requests:      500
+Failed requests:        0
+Keep-Alive requests:    500
+Total transferred:      718000 bytes
+HTML transferred:       594500 bytes
+Requests per second:    14.41 [#/sec] (mean)
+Time per request:       693.950 [ms] (mean)
+Time per request:       69.395 [ms] (mean, across all concurrent requests)
+Transfer rate:          20.21 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:    79  691  66.9    691     852
+Waiting:       78  691  66.9    691     852
+Total:         79  691  66.9    691     852
+
+Percentage of the requests served within a certain time (ms)
+  50%    691
+  66%    720
+  75%    730
+  80%    741
+  90%    772
+  95%    784
+  98%    832
+  99%    850
+ 100%    852 (longest request)

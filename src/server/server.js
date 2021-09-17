@@ -40,6 +40,8 @@ app.post('/api/AddHadith', async function (req, res) {
       matn: req.body.matn,
       ekhrag: req.body.ekhrag
     }
+
+    console.log("khaaaaaaaaaaaaaaaaaaaaaaled", hadith)
     // call hadith nlp enpoint
     // based on result ,submit transaction ( status الصحة) or discard
     // based on private network, prefedined organization,

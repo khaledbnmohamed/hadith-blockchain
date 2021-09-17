@@ -1,0 +1,45 @@
+This is ApacheBench, Version 2.3 <$Revision: 1843412 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient).....done
+
+
+Server Software:        
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /api/AddHadith/
+Document Length:        122 bytes
+
+Concurrency Level:      1
+Time taken for tests:   265.293 seconds
+Complete requests:      100
+Failed requests:        0
+Total transferred:      36200 bytes
+Total body sent:        128500
+HTML transferred:       12200 bytes
+Requests per second:    0.38 [#/sec] (mean)
+Time per request:       2652.926 [ms] (mean)
+Time per request:       2652.926 [ms] (mean, across all concurrent requests)
+Transfer rate:          0.13 [Kbytes/sec] received
+                        0.47 kb/s sent
+                        0.61 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:  2206 2653 141.1   2660    3083
+Waiting:     2196 2582 153.8   2591    2963
+Total:       2206 2653 141.1   2660    3083
+
+Percentage of the requests served within a certain time (ms)
+  50%   2660
+  66%   2691
+  75%   2716
+  80%   2755
+  90%   2831
+  95%   2881
+  98%   3013
+  99%   3083
+ 100%   3083 (longest request)

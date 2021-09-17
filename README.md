@@ -224,7 +224,7 @@ curl --request POST \
  
 ``` 
 curl --request GET \
-  --url 'http://localhost:3000/api/getBlock/<BlockId>' \
+  --url 'http://localhost:3000/api/api/getAllAhadithTesting' \
   --header 'content-type: application/json' \
 ```
 
@@ -283,4 +283,51 @@ curl --request GET \
 curl --request GET \
   --url 'http://localhost:3000/api/getHistoryBlock/<BlockId>' \
   --header 'content-type: application/json' \
+```
+
+
+# Benchamarking
+
+`ab -k -n 100 -c 1 -e Example1001.txt http://localhost:3000/api/getHadith/1 >ExampleResult1001.txt 2>&1`
+`ab -k -n 100 -c 2 -e Example1002.txt http://localhost:3000/api/getHadith/1 >ExampleResult1002.txt 2>&1`
+`ab -k -n 100 -c 3 -e Example1003.txt http://localhost:3000/api/getHadith/1 >ExampleResult1003.txt 2>&1`
+`ab -k -n 100 -c 4 -e Example1004.txt http://localhost:3000/api/getHadith/1 >ExampleResult1004.txt 2>&1`
+`ab -k -n 100 -c 5 -e Example1005.txt http://localhost:3000/api/getHadith/1 >ExampleResult1005.txt 2>&1`
+`ab -k -n 100 -c 10 -e Example10010.txt http://localhost:3000/api/getHadith/1 >ExampleResult10010.txt 2>&1`
+
+
+`ab -k -n 200 -c 10 -e Example20010.txt http://localhost:3000/api/getHadith/1 >ExampleResult20010.txt 2>&1`
+`ab -k -n 300 -c 10 -e Example30010.txt http://localhost:3000/api/getHadith/1 >ExampleResult30010.txt 2>&1`
+`ab -k -n 400 -c 10 -e Example40010.txt http://localhost:3000/api/getHadith/1 >ExampleResult40010.txt 2>&1`
+`ab -k -n 500 -c 10 -e Example50010.txt http://localhost:3000/api/getHadith/1 >ExampleResult50010.txt 2>&1`
+`ab -k -n 1000 -c 10 -e Example100010.txt http://localhost:3000/api/getHadith/1 >ExampleResult100010.txt 2>&1`
+
+`ab -k -n 2000 -c 10 -e Example200010.txt http://localhost:3000/api/getHadith/1 >ExampleResult200010.txt 2>&1`
+`ab -k -n 3000 -c 10 -e Example300010.txt http://localhost:3000/api/getHadith/1 >ExampleResult300010.txt 2>&1`
+`ab -k -n 4000 -c 10 -e Example400010.txt http://localhost:3000/api/getHadith/1 >ExampleResult400010.txt 2>&1`
+`ab -k -n 5000 -c 10 -e Example500010.txt http://localhost:3000/api/getHadith/1 >ExampleResult500010.txt 2>&1`
+
+```
+ab -p /media/khaled/Khaled/hyperledger/fabric-samples/hlf1.4-hadith-chain/post.txt -T application/json -c 1 -e Post1100.txt  -n 100 http://localhost:3000/api/AddHadith/ >Post1100Result.txt 2>&1
+
+ab -p /media/khaled/Khaled/hyperledger/fabric-samples/hlf1.4-hadith-chain/post.txt -T application/json -c 2 -e Post2100.txt  -n 100 http://localhost:3000/api/AddHadith/ >Post2100Result.txt 2>&1
+
+ab -p /media/khaled/Khaled/hyperledger/fabric-samples/hlf1.4-hadith-chain/post.txt -T application/json -c 3 -e Post3100.txt  -n 100 http://localhost:3000/api/AddHadith/ >Post3100Result.txt 2>&1
+
+ab -p /media/khaled/Khaled/hyperledger/fabric-samples/hlf1.4-hadith-chain/post.txt -T application/json -c 4 -e Post4100.txt  -n 100 http://localhost:3000/api/AddHadith/ >Post4100Result.txt 2>&1
+
+ab -p /media/khaled/Khaled/hyperledger/fabric-samples/hlf1.4-hadith-chain/post.txt -T application/json -c 5 -e Post5100.txt  -n 100 http://localhost:3000/api/AddHadith/ >Post5100Result.txt 2>&1
+
+ab -p /media/khaled/Khaled/hyperledger/fabric-samples/hlf1.4-hadith-chain/post.txt -T application/json -c 10 -e Post1010.txt  -n 10 http://localhost:3000/api/AddHadith/ >Post1010Result.txt 2>&1
+
+ab -p /media/khaled/Khaled/hyperledger/fabric-samples/hlf1.4-hadith-chain/post.txt -T application/json -c 10 -e Post10100.txt  -n 100 http://localhost:3000/api/AddHadith/ >Post10100Result.txt 2>&1
+
+ab -p /media/khaled/Khaled/hyperledger/fabric-samples/hlf1.4-hadith-chain/post.txt -T application/json -c 10 -e Post10200.txt  -n 200 http://localhost:3000/api/AddHadith/ >Post10200Result.txt 2>&1
+
+ab -p /media/khaled/Khaled/hyperledger/fabric-samples/hlf1.4-hadith-chain/post.txt -T application/json -c 10 -e Post10300.txt  -n 300 http://localhost:3000/api/AddHadith/ >Post10300Result.txt 2>&1
+
+ab -p /media/khaled/Khaled/hyperledger/fabric-samples/hlf1.4-hadith-chain/post.txt -T application/json -c 10 -e Post10400.txt  -n 400 http://localhost:3000/api/AddHadith/ >Post10400Result.txt 2>&1
+
+ab -p /media/khaled/Khaled/hyperledger/fabric-samples/hlf1.4-hadith-chain/post.txt -T application/json -c 10 -e Post10500.txt  -n 500 http://localhost:3000/api/AddHadith/ >Post10500Result.txt 2>&1
+
 ```
